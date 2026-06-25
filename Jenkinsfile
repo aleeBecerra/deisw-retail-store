@@ -8,7 +8,7 @@ pipeline {
     
     environment {
         REGISTRY_USER = "alessandrabecerra" 
-        IMAGE_NAME    = "deisw-retail-store"
+        IMAGE_NAME    = "alessandrabecerra/deisw-retail-store-u202318947"
         TAG           = "${env.BUILD_NUMBER}" 
     }
 
