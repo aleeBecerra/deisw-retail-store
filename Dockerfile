@@ -1,5 +1,5 @@
-# Build stage: Maven + Temurin 26 JDK (¡Actualizado a Java 26!)
-FROM maven:3.9.11-eclipse-temurin-26-noble AS build
+# Build stage: Maven 3.9.16 + Temurin 26 JDK 
+FROM maven:3.9.16-eclipse-temurin-26-alpine AS build
 WORKDIR /workspace
 
 # copy pom and download dependencies to leverage cache
@@ -10,8 +10,8 @@ RUN mvn -B -f pom.xml -DskipTests dependency:go-offline
 COPY . .
 RUN mvn -B -DskipTests package
 
-# Runtime stage: Temurin 26 JRE (¡Actualizado a Java 26!)
-FROM eclipse-temurin:26-jre-noble
+# Runtime stage: Temurin 26 JRE 
+FROM eclipse-temurin:26-jre-alpine
 WORKDIR /app
 
 # copy the built jar (adjust glob if your artifact name is known)
